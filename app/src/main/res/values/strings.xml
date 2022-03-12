@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">charo_taraf_vibe</string>
+    <string name="shuffle_btn">Shuffle</string>
+    <string name="favourite_btn">Fevorite</string>
+    <string name="playlist_btn">Playlist</string>
+    <string name="total_songs">Total Songs</string>
+    <string name="song_name">Song Name</string>
+    <string name="back_voice">back</string>
+    <string name="Vibe_Dil_Se">Vibe Dil Se</string>
+    <string name="start_music">0:00</string>
+    <string name="end_music">0:00</string>
+    <string name="playlist">Your Playlist</string>
+    <string name="favorite">Favorites</string>
+    <string name="product_image">image</string>
+
+</resources>
