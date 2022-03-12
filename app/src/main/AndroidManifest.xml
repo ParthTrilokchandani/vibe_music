@@ -16,12 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Charo_taraf_vibe">
         <activity
+            android:name=".PlaylistDisplay"
+            android:exported="false" />
+        <activity
             android:name=".FevoriteActivity"
             android:exported="false" />
         <activity
             android:name=".PlaylistActivity"
             android:exported="false" />
-
         <activity
             android:name=".PlayerActivity"
             android:exported="false" />

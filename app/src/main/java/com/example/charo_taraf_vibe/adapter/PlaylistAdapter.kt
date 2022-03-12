@@ -1,6 +1,7 @@
 package com.example.charo_taraf_vibe.adapter
 
 import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.View
@@ -10,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import com.example.charo_taraf_vibe.PlaylistDisplay
 import com.example.charo_taraf_vibe.R
 import com.example.database.models.Playlist
 import kotlinx.coroutines.CoroutineScope
@@ -29,6 +32,12 @@ class PlaylistAdapter(
             lblPlaylistName.text = objects[position].name
             lblSongCount.text = "12"
 
+            val card = row.findViewById<CardView>(R.id.playlistId)
+            card.setOnClickListener{
+                val intent = Intent(context, PlaylistDisplay::class.java)
+                intent.putExtra("playlistId", objects[position].id.toString())
+                context.startActivity(intent)
+            }
             return row
         } catch (ex: Exception) {
             Log.e("inf", ex.message!!)

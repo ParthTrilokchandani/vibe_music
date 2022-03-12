@@ -30,8 +30,6 @@ class MyDatabaseHelper(context: Context) :
             db.execSQL("CREATE TABLE Playlists (Id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL)")
             db.execSQL("CREATE TABLE PlaylistsItem (Id INTEGER PRIMARY KEY AUTOINCREMENT, PlaylistId LONG NOT NULL, Songname TEXT NOT NULL, Songpath TEXT NOT NULL, FOREIGN KEY(playlistId) REFERENCES Playlist(Id))")
             db.execSQL("INSERT INTO Playlists (Name) VALUES ('LIKED')")
-            db.execSQL("INSERT INTO Playlists (Name) VALUES ('favorites1')")
-            db.execSQL("INSERT INTO Playlists (Name) VALUES ('favorites2')")
 
         } catch (ex: SQLiteException) {
             Log.e("MyDatabaseHelper","Database already exists.")
