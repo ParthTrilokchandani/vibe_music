@@ -11,11 +11,9 @@ import kotlinx.coroutines.Job
 class Shared {
     companion object {
         var currentMediaPlayer: MediaPlayer? = null
-        var currentMp3: String? = null
+        var currentMp3Path: String? = null
         var currentMp3Name: String? = null
         var currentProgress: Int = 0
-        var seekBarUpdateJob: Job? = null
-        var musicList: ArrayList<HashMap<String, String>> = arrayListOf()
 
         fun convertToMinutes(milliseconds: Int) : String {
             val minutes = milliseconds / 1000 / 60

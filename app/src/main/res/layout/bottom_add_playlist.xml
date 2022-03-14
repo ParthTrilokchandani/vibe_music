@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PlaylistActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="15sp"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Theme.ViewPagerTest.CancelButton"
+            android:id="@+id/closeDialog"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50sp"
+            app:icon="@drawable/ic_close"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp"
+            app:iconSize="15dp"
+            app:iconTint="#FF6363"
+            app:rippleColor="#FFEEEE"
+            app:strokeColor="#FF6363"
+            app:strokeWidth="1.5dp" />
+
+        <TextView
+            android:id="@+id/mainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add New Playlist"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Theme.ViewPagerTest.OkButton"
+            android:id="@+id/check"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50sp"
+            app:icon="@drawable/ic_check"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp"
+            app:iconSize="15dp"
+            app:iconTint="#3AFF42"
+            app:rippleColor="#E9FFEA"
+            app:strokeColor="#3AFF42"
+            app:strokeWidth="1.5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2sp"
+            android:text="Enter Playlist Name" />
+
+        <EditText
+            style="@style/Theme.ViewPagerTest.TextBox"
+            android:id="@+id/playlistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4sp"
+            android:background="@drawable/corner_background"
+            android:padding="12sp"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

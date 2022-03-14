@@ -8,7 +8,7 @@
     android:focusable="true"
     app:cardElevation="@dimen/cardview_default_elevation"
     android:layout_width="162sp"
-    android:layout_height="200sp">
+    android:layout_height="230sp">
 
     <LinearLayout
         android:padding="20sp"
@@ -16,13 +16,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgProduct"
-            android:src="@drawable/playlist_icon"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
-            android:contentDescription="@string/product_image" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/playlist"
+            android:elevation="0dp"
+            app:icon="@drawable/playlist_icon"
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:backgroundTint="#1B1717"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp"
+            app:iconSize="70dp"
+            app:iconTint="@color/white" />
 
         <TextView
             android:id="@+id/lblPlaylistName"

@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.MediaStore
 import android.util.Log
 import com.example.database.models.Playlist
 import com.example.database.models.PlaylistItems
@@ -56,7 +55,8 @@ class MyDatabaseHelper(context: Context) :
         while (!cursor.isAfterLast()) {
             val playlist = Playlist(
                 id = cursor.getInt(0),
-                name = cursor.getString(1)
+                name = cursor.getString(1),
+                songCount = getPlaylistItems(cursor.getInt(0)).count()
             )
 
             arrayOfplaylist.add(playlist)
@@ -106,6 +106,8 @@ class MyDatabaseHelper(context: Context) :
             null
         )
         cursor.moveToFirst()
+        cursor.count
+
         val arrayOfSongs = arrayListOf<PlaylistItems>()
 
         while (!cursor.isAfterLast()) {
@@ -113,7 +115,7 @@ class MyDatabaseHelper(context: Context) :
                 id = cursor.getInt(0),
                 playlistid = cursor.getLong(1),
                 songname = cursor.getString(2),
-                songpath = cursor.getString(3)
+                songpath = cursor.getString(3),
             )
 
             arrayOfSongs.add(playlistItems)

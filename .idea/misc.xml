@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vibe/app/src/main/res/drawable/bg_dialog.xml" value="0.10989583333333333" />
         <entry key="..\:/Vibe/app/src/main/res/drawable/favorite_border_icon.xml" value="0.19074074074074074" />
         <entry key="..\:/Vibe/app/src/main/res/drawable/gradiant.xml" value="0.2128205128205128" />
+        <entry key="..\:/Vibe/app/src/main/res/drawable/ic_check.xml" value="0.10989583333333333" />
+        <entry key="..\:/Vibe/app/src/main/res/drawable/ic_close.xml" value="0.10989583333333333" />
+        <entry key="..\:/Vibe/app/src/main/res/drawable/ic_plus.xml" value="0.21614583333333334" />
         <entry key="..\:/Vibe/app/src/main/res/drawable/progress_bar.xml" value="0.21614583333333334" />
         <entry key="..\:/Vibe/app/src/main/res/layout/activity_fevorite.xml" value="0.2" />
         <entry key="..\:/Vibe/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Vibe/app/src/main/res/layout/activity_player.xml" value="0.22" />
-        <entry key="..\:/Vibe/app/src/main/res/layout/activity_playlist.xml" value="0.2" />
+        <entry key="..\:/Vibe/app/src/main/res/layout/activity_playlist.xml" value="0.22" />
         <entry key="..\:/Vibe/app/src/main/res/layout/activity_playlist_display.xml" value="0.2" />
         <entry key="..\:/Vibe/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Vibe/app/src/main/res/layout/bottom_add_playlist.xml" value="0.25" />
+        <entry key="..\:/Vibe/app/src/main/res/layout/corner_background.xml" value="0.1" />
         <entry key="..\:/Vibe/app/src/main/res/layout/playlist_grid.xml" value="0.2" />
       </map>
     </option>

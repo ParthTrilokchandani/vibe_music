@@ -4,14 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaylistDisplay">
-
-    <ListView
-        android:id="@+id/musicPlaylistLV"
+    tools:context=".PlaylistDisplay"
+    android:background="@color/black">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_margin="20sp"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="?actionBarSize">
+
+            <LinearLayout android:padding="5.0sp"
+                android:layout_marginStart="5sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/back"
+                    android:elevation="0dp"
+                    app:icon="@drawable/ic_back"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:backgroundTint="#1B1717"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="0dp"
+                    app:iconSize="25dp"
+                    app:iconTint="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="319dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="2.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="Vibe Music"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <ListView
+        android:id="@+id/musicPlaylistLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     </ListView>
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

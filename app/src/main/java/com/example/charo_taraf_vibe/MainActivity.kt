@@ -10,12 +10,15 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import android.util.Base64.encode
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import org.json.JSONObject
@@ -32,17 +35,15 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val PERMISSION_REQUEST_CODE = 0
     }
-
-    private lateinit var favoriteButton: Button
+    private lateinit var playlist: Button
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        setDefaultNightMode(MODE_NIGHT_YES)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        favoriteButton = findViewById(R.id.favorite)
-
-        favoriteButton.setOnClickListener{
+        playlist = findViewById(R.id.playlist)
+        playlist.setOnClickListener{
             val intent = Intent(this, PlaylistActivity::class.java)
             startActivity(intent)
         }
@@ -93,7 +94,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("mp3Path", "${mapList[index]["path"]}/${mapList[index]["name"]}")
             intent.putExtra("mp3Name", "${mapList[index]["name"]}")
             intent.putExtra("musicId", "${index}")
-            Toast.makeText(this, mapList[index]["path"], Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
     }
@@ -162,7 +162,6 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Storage Granted", Toast.LENGTH_SHORT).show()
             } else {
                 val builder1: AlertDialog.Builder = AlertDialog.Builder(this)
                 builder1.setTitle("Permission Required")
@@ -204,7 +203,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun readAllMp3Files(mapList:ArrayList<HashMap<String, String>>): ArrayList<String> {
 
-
         val mp3Names = arrayListOf<String>()
         for (map in mapList) {
             mp3Names.add(
@@ -214,8 +212,7 @@ class MainActivity : AppCompatActivity() {
                     .removeSuffix("m4a")
             )
         }
-
         return mp3Names
-
     }
+
 }

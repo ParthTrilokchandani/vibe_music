@@ -9,7 +9,6 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import com.example.database.MyDatabaseHelper
 import com.example.database.models.PlaylistItems
 import com.google.android.material.button.MaterialButton
@@ -26,6 +25,8 @@ class PlayerActivity : AppCompatActivity()
     private lateinit var playForward: Button
     private var musicId : Int = -1
     private lateinit var like: MaterialButton
+    private lateinit var playlist: Button
+    private lateinit var back: Button
 
     private lateinit var seekBarUpdateJob: Job
 
@@ -38,13 +39,6 @@ class PlayerActivity : AppCompatActivity()
 
         songName = findViewById(R.id.songName)
         songName.isSelected = true
-
-        val back = findViewById<Button>(R.id.back).setOnClickListener {
-            moveTaskToBack(true)
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         seekBar = findViewById(R.id.play_seekbar)
         mPlayButton = findViewById(R.id.play)
         totalDuration = findViewById(R.id.totalDuration)
@@ -52,14 +46,26 @@ class PlayerActivity : AppCompatActivity()
         playBack = findViewById(R.id.playBack)
         playForward = findViewById(R.id.playForward)
         like = findViewById(R.id.like)
+        playlist = findViewById(R.id.playlist)
+        back = findViewById(R.id.back)
+        playlist.setOnClickListener{
+            val intent = Intent(this, PlaylistActivity::class.java)
+            intent.putExtra("songToAddPath",Shared.currentMp3Path.toString())
+            intent.putExtra("songToAddName",Shared.currentMp3Name.toString())
+            startActivity(intent)
+        }
 
+        back.setOnClickListener{
+//            onBackPressed()
+            Toast.makeText(this, "onBackPressedEvent", Toast.LENGTH_SHORT).show()
+        }
         like.setOnClickListener{
             if(it.tag.equals("liked")) {
                 MyDatabaseHelper(this).deletePlaylistItems(Shared.currentMp3Name.toString())
                 like.setIconResource(R.drawable.ic_heart_outline)
                 like.tag = "notliked"
             } else {
-                MyDatabaseHelper(this).insertPlaylistItems(playlistItems = PlaylistItems(null, 1, Shared.currentMp3Name.toString(),Shared.currentMp3.toString()))
+                MyDatabaseHelper(this).insertPlaylistItems(playlistItems = PlaylistItems(null, 1, Shared.currentMp3Name.toString(),Shared.currentMp3Path.toString()))
                 like.setIconResource(R.drawable.ic_heart_fill)
                 like.tag = "liked"
             }
@@ -71,7 +77,7 @@ class PlayerActivity : AppCompatActivity()
             val list = prefs.getString("list", "default")
             val mapList = Shared.convertToHashMap(list)
 
-            Shared.currentMp3 = "${mapList[musicId-1]["path"]}/${mapList[musicId-1]["name"]}"
+            Shared.currentMp3Path = "${mapList[musicId-1]["path"]}/${mapList[musicId-1]["name"]}"
             Shared.currentMp3Name = "${mapList[musicId-1]["name"]}"
             Shared.currentProgress = 0
 
@@ -100,7 +106,7 @@ class PlayerActivity : AppCompatActivity()
             val list = prefs.getString("list", "default")
             val mapList = Shared.convertToHashMap(list)
 
-            Shared.currentMp3 = "${mapList[musicId+1]["path"]}/${mapList[musicId+1]["name"]}"
+            Shared.currentMp3Path = "${mapList[musicId+1]["path"]}/${mapList[musicId+1]["name"]}"
             Shared.currentMp3Name = "${mapList[musicId+1]["name"]}"
             Shared.currentProgress = 0
 
@@ -184,7 +190,6 @@ class PlayerActivity : AppCompatActivity()
 
     override fun onResume()
     {
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
         playSelectedMp3()
         checkSongIsLiked()
         super.onResume()
@@ -192,7 +197,6 @@ class PlayerActivity : AppCompatActivity()
 
     override fun onPause()
     {
-        Toast.makeText(this, "paused", Toast.LENGTH_SHORT).show()
         super.onPause()
     }
 
@@ -204,7 +208,6 @@ class PlayerActivity : AppCompatActivity()
 
     override fun onDestroy()
     {
-        Toast.makeText(this, "paused", Toast.LENGTH_SHORT).show()
         super.onDestroy()
     }
 
@@ -214,7 +217,7 @@ class PlayerActivity : AppCompatActivity()
         val mp3Name = intent.getStringExtra("mp3Name")
         musicId = intent.getStringExtra("musicId").toString().toInt()
 
-        if (mp3Path == Shared.currentMp3)
+        if (mp3Path == Shared.currentMp3Path)
         {
             totalDuration.text = Shared.convertToMinutes(Shared.currentMediaPlayer?.duration!!)
             currentDuration.text = Shared.convertToMinutes(Shared.currentProgress)
@@ -225,7 +228,7 @@ class PlayerActivity : AppCompatActivity()
             return
         }
 
-        Shared.currentMp3 = mp3Path
+        Shared.currentMp3Path = mp3Path
         Shared.currentMp3Name = mp3Name
         Shared.currentProgress = 0
 
@@ -247,7 +250,6 @@ class PlayerActivity : AppCompatActivity()
 
         Shared.currentMediaPlayer?.start()
 
-        Toast.makeText(this, "resume", Toast.LENGTH_SHORT).show()
     }
 
     private fun checkSongIsLiked(){
