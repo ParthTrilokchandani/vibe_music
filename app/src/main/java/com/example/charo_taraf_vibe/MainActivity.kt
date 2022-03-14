@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.charo_taraf_vibe.adapter.SongListAdapter
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -36,13 +37,14 @@ class MainActivity : AppCompatActivity() {
         private const val PERMISSION_REQUEST_CODE = 0
     }
     private lateinit var playlist: Button
+    private lateinit var totalSongs: TextView
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        setDefaultNightMode(MODE_NIGHT_YES)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         playlist = findViewById(R.id.playlist)
+        totalSongs = findViewById(R.id.totalSongs)
         playlist.setOnClickListener{
             val intent = Intent(this, PlaylistActivity::class.java)
             startActivity(intent)
@@ -84,9 +86,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val mp3Names = readAllMp3Files(mapList)
+        var mp3NamesArray = arrayOf<String>()
+        mp3NamesArray = mp3Names.toTypedArray()
         val musicListView = findViewById<ListView>(R.id.musicLV)
-        val musicArrayAdapter: ArrayAdapter<String> =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, mp3Names)
+        val musicArrayAdapter: SongListAdapter = SongListAdapter(this, mp3NamesArray)
 
         musicListView.adapter = musicArrayAdapter
         musicListView.setOnItemClickListener { _: AdapterView<*>, _: View, index: Int, _: Long ->
@@ -96,6 +99,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("musicId", "${index}")
             startActivity(intent)
         }
+        totalSongs.setText("Total Songs : ${mp3Names.count()}")
     }
 
     private fun checkPermission(): Boolean {

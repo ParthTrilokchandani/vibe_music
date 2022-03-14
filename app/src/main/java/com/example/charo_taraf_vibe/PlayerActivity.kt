@@ -39,6 +39,7 @@ class PlayerActivity : AppCompatActivity()
 
         songName = findViewById(R.id.songName)
         songName.isSelected = true
+
         seekBar = findViewById(R.id.play_seekbar)
         mPlayButton = findViewById(R.id.play)
         totalDuration = findViewById(R.id.totalDuration)

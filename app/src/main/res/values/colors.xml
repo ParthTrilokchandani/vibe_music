@@ -11,4 +11,5 @@
     <color name="cool_pink">#F50857</color>
     <color name="bottomNavLight">#F4F4F4</color>
     <color name="bottomNavDark">#191919</color>
+    <color name="darkActionBar">#191919</color>
 </resources>
