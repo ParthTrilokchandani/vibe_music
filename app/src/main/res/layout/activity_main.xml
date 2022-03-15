@@ -20,27 +20,16 @@
         android:gravity="center"
         android:layout_height="?actionBarSize">
 
-        <LinearLayout android:padding="5.0sp"
+        <LinearLayout
             android:layout_marginStart="5sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/back"
-                android:elevation="0dp"
-                app:icon="@drawable/ic_back"
-                android:focusable="true"
-                android:clickable="true"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:backgroundTint="#1B1717"
-                app:iconGravity="textEnd"
-                app:iconPadding="0dp"
-                app:iconSize="25dp"
-                app:iconTint="@color/white" />
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_launcher_foreground">
+            </ImageView>
 
         </LinearLayout>
 
