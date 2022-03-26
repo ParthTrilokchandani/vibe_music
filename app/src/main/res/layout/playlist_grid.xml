@@ -10,29 +10,25 @@
     android:layout_width="162sp"
     android:layout_height="265sp">
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/back"-->
-<!--        android:layout_width="35dp"-->
-<!--        android:layout_height="35dp"-->
-<!--        android:layout_marginStart="129sp"-->
-<!--        android:backgroundTint="@android:color/transparent"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:insetLeft="0dp"-->
-<!--        android:insetTop="0dp"-->
-<!--        android:insetRight="0dp"-->
-<!--        android:insetBottom="0dp"-->
-<!--        app:icon="@drawable/ic_3_dots"-->
-<!--        app:iconGravity="textEnd"-->
-<!--        app:iconPadding="0dp"-->
-<!--        app:iconSize="25dp"-->
-<!--        app:iconTint="@color/white" />-->
-
-    <ImageView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/del"
+        android:visibility="gone"
         android:layout_width="35dp"
-        android:layout_height="35dp">
+        android:layout_height="35dp"
+        android:layout_marginStart="129sp"
+        android:backgroundTint="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_del"
+        app:iconGravity="textEnd"
+        app:iconPadding="0dp"
+        app:iconSize="25dp"
+        app:iconTint="@color/white" />
 
-    </ImageView>
 
     <LinearLayout
         android:padding="20sp"

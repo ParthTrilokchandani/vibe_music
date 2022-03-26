@@ -23,6 +23,11 @@ class PlaylistAdapter(
             val imgProduct = row.findViewById<Button>(R.id.playlist)
             val lblPlaylistName = row.findViewById<TextView>(R.id.lblPlaylistName)
             val lblSongCount = row.findViewById<TextView>(R.id.lblSongCount)
+            val btnTrash = row.findViewById<Button>(R.id.del)
+
+            if(position != 0) {
+                btnTrash.visibility = View.VISIBLE
+            }
 
             lblPlaylistName.text = objects[position].name
             lblSongCount.setText("${objects[position].songCount.toString()} Songs")
@@ -44,6 +49,9 @@ class PlaylistAdapter(
                     Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show()
                     activity.finish()
                 }
+            }
+            btnTrash.setOnClickListener {
+                MyDatabaseHelper(row.context).deletePlaylists(objects[position].id.toString().toInt())
             }
             return row
         } catch (ex: Exception) {
